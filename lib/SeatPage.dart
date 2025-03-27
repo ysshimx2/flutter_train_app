@@ -27,3 +27,29 @@ class _SeatPageState extends State<SeatPage> {
     }); // 선택된 좌석의 좌석번호 상태 토글
   }
 }
+
+void _confirmBooking() {
+  if (selectedSeats.isEmpty) return; // 선택된 좌석이 없으면 예약하지 않음
+
+  showDialog(
+    context: context,
+    builder:
+        (context) => AlertDialog(
+          title: const Text('예매 확인'),
+          content: Text('예매하시겠습니까?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('취소'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context, selectedSeats);
+              },
+              child: const Text('확인'),
+            ),
+          ],
+        ),
+  );
+}
