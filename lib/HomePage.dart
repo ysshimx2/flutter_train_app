@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   //출발역과 도착역 선언
 
   void _selectStation(bool isDeparture) async {
-    fianl selectedStation = await Navigator.push(
+    final selectedStation = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => StationListPage(isDeparture: isDeparture),
@@ -37,6 +37,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _goToSeatPage() {
-    if 
+    if (departureStation == null || arrivalStation == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('출발역과 도착역을 선택하세요!.')));
+      //출발역과 도착역이 선택되지 않았을 때 메세지 출력
+      return;
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder:
+            (context) => SeatPage(
+              departureStation: departureStation!,
+              arrivalStation: arrivalStation!,
+            ),
+      ),
+    );
   }
 }
