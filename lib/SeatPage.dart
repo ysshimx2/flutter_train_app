@@ -52,4 +52,51 @@ void _confirmBooking() {
           ],
         ),
   );
+} //예약확인 메세지 팝업
+
+@override // 좌석 선택 화면 UI
+Widget build(Buildcontext context) {
+  return Scaffold(
+    appBar: AppBar(title: const Text('좌석 선택')),
+    body: Column(
+      children: [
+        Text(
+          '${widget.departureStation} → ${widget.arrivalStation}',
+          style: const TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.purple,
+          ),
+        ),
+        const SizedBox(height: 20),
+        Expanded(
+          child: GridView.builder(
+            padding: const EdgeInsets.all(20),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+              childAspectRatio: 1,
+            ), //상단 출발역,도착역 정보보
+            itemCount: 80,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () => _toggleSeat(index),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color:
+                        selectedSeats.contaions(index)
+                            ? Colors.purple
+                            : Colors.grey[300],
+                    borderRadius: BorderRadius.circular(8),
+                  ), //각 좌석 특성 설정
+                ),
+              );
+            },
+          ),
+        ),
+        ElevatedButton(onPressed: _confirmBooking, child: const Text('예매하기')),
+      ], //하단 예매하기 버튼
+    ),
+  );
 }
