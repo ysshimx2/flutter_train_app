@@ -77,7 +77,7 @@ Widget build(Buildcontext context) {
               crossAxisSpacing: 8,
               mainAxisSpacing: 8,
               childAspectRatio: 1,
-            ), //상단 출발역,도착역 정보보
+            ), //상단 출발역,도착역 정보
             itemCount: 80,
             itemBuilder: (context, index) {
               return GestureDetector(
