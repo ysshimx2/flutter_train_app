@@ -17,3 +17,24 @@ class StationListPage extends StatelessWidget {
   ]; // 역 목록
   StationListPage({super.key, required this.isDeparture});
 
+  @override // 출발역 도착역 선택 박스
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(isDeparture ? '출발역' : '도착역')),
+      body: ListView.builder(
+        itemCount: stations.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(
+              stations[index],
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              Navigator.pop(context, stations[index]);
+            },
+          );
+        },
+      ),
+    );
+  }
+}
