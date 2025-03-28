@@ -58,7 +58,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(title: Text("Home Page")),
+      body: Center(child: Text("Welcome to Flutter Train App!")),
+    );
   }
 }
