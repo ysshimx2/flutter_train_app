@@ -30,7 +30,7 @@ class StationListPage extends StatelessWidget {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             onTap: () {
-              Navigator.pop(context, stations[index]);
+              Navigator.pop(context, stations[index]); // 역을 선택하고, 선택된 값 반환
             },
           );
         },

@@ -59,8 +59,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home Page")),
-      body: Center(child: Text("Welcome to Flutter Train App!")),
+      appBar: AppBar(title: const Text("기차 예매")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // 출발역 선택
+            ListTile(
+              title: const Text('출발역'),
+              subtitle: Text(departureStation ?? '선택 안됨'),
+              onTap: () => _selectStation(true),
+            ),
+            const SizedBox(height: 20),
+            // 도착역 선택
+            ListTile(
+              title: const Text('도착역'),
+              subtitle: Text(arrivalStation ?? '선택 안됨'),
+              onTap: () => _selectStation(false),
+            ),
+            const SizedBox(height: 40),
+            // 좌석 선택 버튼
+            ElevatedButton(
+              onPressed: _goToSeatPage,
+              child: const Text('좌석 선택'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
