@@ -14,6 +14,11 @@ class SeatPage extends StatefulWidget {
   State<SeatPage> createState() => _SeatPageState();
 } //출발역 도착역 클래스
 
+class _toggleSeat {
+  final int index;
+  const _toggleSeat(this.index);
+}
+
 class _SeatPageState extends State<SeatPage> {
   Set<int> selectedSeats = {}; // 선택된 좌석
 
@@ -26,11 +31,18 @@ class _SeatPageState extends State<SeatPage> {
       }
     }); // 선택된 좌석의 좌석번호 상태 토글
   }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
 }
 
-void _confirmBooking() {
+void _confirmBooking(dynamic selectedSeats) {
   if (selectedSeats.isEmpty) return; // 선택된 좌석이 없으면 예약하지 않음
 
+  var context;
   showDialog(
     context: context,
     builder:
@@ -55,19 +67,34 @@ void _confirmBooking() {
 } //예약확인 메세지 팝업
 
 @override // 좌석 선택 화면 UI
-Widget build(Buildcontext context) {
+Widget build(BuildContext context, dynamic widget) {
+  var selectedSeats;
   return Scaffold(
     appBar: AppBar(title: const Text('좌석 선택')),
     body: Column(
       children: [
         Text(
-          '${widget.departureStation} → ${widget.arrivalStation}',
+          '${widget.departureStation}',
           style: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
             color: Colors.purple,
           ),
         ),
+        const Icon(
+          Icons.arrow_circle_right_outlined,
+          size: 30,
+          color: Colors.grey,
+        ),
+        Text(
+          '${widget.arrivalStation}',
+          style: const TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.purple,
+          ),
+        ),
+
         const SizedBox(height: 20),
         Expanded(
           child: GridView.builder(
@@ -95,7 +122,10 @@ Widget build(Buildcontext context) {
             },
           ),
         ),
-        ElevatedButton(onPressed: _confirmBooking, child: const Text('예매하기')),
+        ElevatedButton(
+          onPressed: () => _confirmBooking(selectedSeats),
+          child: const Text('예매하기'),
+        ),
       ], //하단 예매하기 버튼
     ),
   );
