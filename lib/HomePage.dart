@@ -89,8 +89,8 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 10),
                       TextButton(
                         onPressed: () => _selectStation(true), // 출발역 선택
-                        child: const Text(
-                          '선택',
+                        child: Text(
+                          departureStation ?? '선택',
                           style: TextStyle(fontSize: 40, color: Colors.black),
                         ),
                       ),
@@ -112,9 +112,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 10),
                       TextButton(
-                        onPressed: () => _selectStation(true), // 도착역역 선택
-                        child: const Text(
-                          '선택',
+                        onPressed: () => _selectStation(false), // 도착역 선택
+                        child: Text(
+                          arrivalStation ?? '선택',
                           style: TextStyle(fontSize: 40, color: Colors.black),
                         ),
                       ),
