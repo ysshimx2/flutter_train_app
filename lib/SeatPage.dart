@@ -36,7 +36,7 @@ class _SeatPageState extends State<SeatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('좌석 선택')),
-      body: Column(
+      body: Row(
         children: [
           Text(
             widget.departureStation,
