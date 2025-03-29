@@ -29,8 +29,20 @@ class _SeatPageState extends State<SeatPage> {
       } else {
         selectedSeats.add(seatNumber);
       }
-    }); // 선택된 좌석의 좌석번호 상태 토글
+    }); // 선택된 좌석의 상태 변경
   }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
+  // @override
+  //Widget build(BuildContext context) {
+  // TODO: implement build
+  //throw UnimplementedError();
+  //}
 
   //@override
   //Widget build(BuildContext context) {
@@ -38,9 +50,10 @@ class _SeatPageState extends State<SeatPage> {
   //}
 }
 
-void _confirmBooking() {
+void _confirmBooking(dynamic selectedSeats) {
   if (selectedSeats.isEmpty) return; // 선택된 좌석이 없으면 예약하지 않음
 
+  var context;
   showDialog(
     context: context,
     builder:
@@ -104,6 +117,7 @@ Widget build(BuildContext context, dynamic widget) {
             ), //상단 출발역,도착역 정보
             itemCount: 80,
             itemBuilder: (context, index) {
+              var selectedSeats;
               return GestureDetector(
                 onTap: () => _toggleSeat(index),
                 child: Container(
@@ -120,10 +134,14 @@ Widget build(BuildContext context, dynamic widget) {
           ),
         ),
         ElevatedButton(
-          onPressed: () => _confirmBooking(selectedSeats),
+          onPressed: () => _confirmBooking,
           child: const Text('예매하기'),
         ),
       ], //하단 예매하기 버튼
     ),
   );
+}
+
+class _toggleSeat {
+  _toggleSeat(int index);
 }
