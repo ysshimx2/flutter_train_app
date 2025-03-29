@@ -59,12 +59,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("기차 예매"))),
+      appBar: AppBar(title: const Center(child: Text("기차 예매"))), //상단 앱바
       body: Container(
         color: Colors.grey[200],
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, //세로 중앙 정렬
           children: [
             Container(
               height: 200,
@@ -87,9 +87,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                        departureStation ?? '선택',
-                        style: const TextStyle(fontSize: 40),
+                      TextButton(
+                        onPressed: () => _selectStation(true), // 출발역 선택
+                        child: const Text(
+                          '선택',
+                          style: TextStyle(fontSize: 40, color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
@@ -108,9 +111,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                        arrivalStation ?? '선택',
-                        style: const TextStyle(fontSize: 40),
+                      TextButton(
+                        onPressed: () => _selectStation(true), // 도착역역 선택
+                        child: const Text(
+                          '선택',
+                          style: TextStyle(fontSize: 40, color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
