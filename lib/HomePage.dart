@@ -96,9 +96,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 50),
+                  const SizedBox(width: 40),
                   Container(width: 2, height: 50, color: Colors.grey[400]),
-                  const SizedBox(width: 50),
+                  const SizedBox(width: 40),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
