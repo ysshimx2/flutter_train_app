@@ -93,9 +93,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 50),
                   Container(width: 2, height: 50, color: Colors.grey[400]),
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 50),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const SizedBox(width: 100),
+            const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
@@ -125,8 +125,8 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 50,
-                  vertical: 20,
+                  horizontal: 150,
+                  vertical: 15,
                 ),
               ),
               onPressed: _goToSeatPage,
