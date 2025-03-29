@@ -59,30 +59,85 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("기차 예매")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      appBar: AppBar(title: const Center(child: Text("기차 예매"))),
+      body: Container(
+        color: Colors.grey[200],
+        padding: const EdgeInsets.all(20.0),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 출발역 선택
-            ListTile(
-              title: const Text('출발역'),
-              subtitle: Text(departureStation ?? '선택 안됨'),
-              onTap: () => _selectStation(true),
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        '출발역',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        departureStation ?? '선택 안됨',
+                        style: const TextStyle(fontSize: 40),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 20),
+                  Container(width: 2, height: 50, color: Colors.grey[400]),
+                  const SizedBox(width: 20),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        '도착역',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        arrivalStation ?? '선택 안됨',
+                        style: const TextStyle(fontSize: 40),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 20),
-            // 도착역 선택
-            ListTile(
-              title: const Text('도착역'),
-              subtitle: Text(arrivalStation ?? '선택 안됨'),
-              onTap: () => _selectStation(false),
-            ),
-            const SizedBox(height: 40),
-            // 좌석 선택 버튼
+            const SizedBox(width: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 50,
+                  vertical: 15,
+                ),
+              ),
               onPressed: _goToSeatPage,
-              child: const Text('좌석 선택'),
+              child: const Text(
+                '좌석 선택',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),

@@ -14,10 +14,10 @@ class SeatPage extends StatefulWidget {
   State<SeatPage> createState() => _SeatPageState();
 } //출발역 도착역 클래스
 
-class _toggleSeat {
-  final int index;
-  const _toggleSeat(this.index);
-}
+//class _toggleSeat {
+//final int index;
+//const _toggleSeat(this.index);
+//}
 
 class _SeatPageState extends State<SeatPage> {
   Set<int> selectedSeats = {}; // 선택된 좌석
@@ -32,23 +32,21 @@ class _SeatPageState extends State<SeatPage> {
     }); // 선택된 좌석의 좌석번호 상태 토글
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  //@override
+  //Widget build(BuildContext context) {
+  //throw UnimplementedError();
+  //}
 }
 
-void _confirmBooking(dynamic selectedSeats) {
+void _confirmBooking() {
   if (selectedSeats.isEmpty) return; // 선택된 좌석이 없으면 예약하지 않음
 
-  var context;
   showDialog(
     context: context,
     builder:
         (context) => AlertDialog(
           title: const Text('예매 확인'),
-          content: Text('예매하시겠습니까?'),
+          content: const Text('예매하시겠습니까?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
@@ -68,13 +66,12 @@ void _confirmBooking(dynamic selectedSeats) {
 
 @override // 좌석 선택 화면 UI
 Widget build(BuildContext context, dynamic widget) {
-  var selectedSeats;
   return Scaffold(
     appBar: AppBar(title: const Text('좌석 선택')),
     body: Column(
       children: [
         Text(
-          '${widget.departureStation}',
+          widget.departureStation,
           style: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -87,7 +84,7 @@ Widget build(BuildContext context, dynamic widget) {
           color: Colors.grey,
         ),
         Text(
-          '${widget.arrivalStation}',
+          widget.arrivalStation,
           style: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -112,7 +109,7 @@ Widget build(BuildContext context, dynamic widget) {
                 child: Container(
                   decoration: BoxDecoration(
                     color:
-                        selectedSeats.contaions(index)
+                        selectedSeats.contains(index)
                             ? Colors.purple
                             : Colors.grey[300],
                     borderRadius: BorderRadius.circular(8),
