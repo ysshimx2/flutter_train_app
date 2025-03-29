@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         color: Colors.grey[200],
         padding: const EdgeInsets.all(20.0),
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        departureStation ?? '선택 안됨',
+                        departureStation ?? '선택',
                         style: const TextStyle(fontSize: 40),
                       ),
                     ],
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        arrivalStation ?? '선택 안됨',
+                        arrivalStation ?? '선택',
                         style: const TextStyle(fontSize: 40),
                       ),
                     ],
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: 100),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 50,
-                  vertical: 15,
+                  vertical: 20,
                 ),
               ),
               onPressed: _goToSeatPage,
