@@ -35,7 +35,10 @@ class StationListPage extends StatelessWidget {
               height: 50,
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: Colors.grey[300]!, width: 1),
+                  bottom: BorderSide(
+                    color: Colors.grey[300]!,
+                    width: 1,
+                  ), //역이름 감싸는 영역
                 ),
               ),
               child: ListTile(

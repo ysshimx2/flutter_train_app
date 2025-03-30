@@ -33,7 +33,6 @@ class _SeatPageState extends State<SeatPage> {
       appBar: AppBar(title: const Text('좌석 선택'), centerTitle: true),
       body: Column(
         children: [
-          const SizedBox(height: 16), // 상단 여백
           _buildStationRow(widget), // 출발역 ~ 도착역 Row 분리
           const SizedBox(height: 16), // Row와 GridView 사이 여백
           Expanded(
@@ -66,6 +65,7 @@ class _SeatPageState extends State<SeatPage> {
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: ElevatedButton(
+              //하단 예매하기 버튼
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 shape: RoundedRectangleBorder(

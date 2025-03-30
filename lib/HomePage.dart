@@ -92,6 +92,7 @@ class _HomePageState extends State<HomePage> {
                         child: TextButton(
                           onPressed: () => _selectStation(true), // 출발역 선택
                           child: FittedBox(
+                            //역 이름 길면 텍스트 크기 자동 줄임
                             fit: BoxFit.scaleDown,
                             child: Text(
                               departureStation ?? '선택',
@@ -105,9 +106,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 40),
+                  const SizedBox(width: 40), //여백 간격
                   Container(width: 2, height: 50, color: Colors.grey[400]),
-                  const SizedBox(width: 40),
+                  const SizedBox(width: 40), //여백 간격
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -125,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                         child: TextButton(
                           onPressed: () => _selectStation(false), // 도착역 선택
                           child: FittedBox(
+                            //역 이름 길면 텍스트 크기 자동 줄임
                             fit: BoxFit.scaleDown,
                             child: Text(
                               arrivalStation ?? '선택',
@@ -141,8 +143,9 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 20), //여백 간격
             ElevatedButton(
+              //좌석 선택 버튼
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 shape: RoundedRectangleBorder(
