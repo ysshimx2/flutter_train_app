@@ -35,7 +35,7 @@ class _SeatPageState extends State<SeatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('좌석 선택')),
+      appBar: AppBar(title: const Center(child: Text('좌석 선택'))),
       body: Row(
         children: [
           Text(
@@ -58,7 +58,7 @@ class _SeatPageState extends State<SeatPage> {
               fontWeight: FontWeight.bold,
               color: Colors.purple,
             ),
-          ),
+          ), //상단 출발역,화살표 아이콘,도착역
 
           const SizedBox(height: 20),
           Expanded(
@@ -69,7 +69,7 @@ class _SeatPageState extends State<SeatPage> {
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
                 childAspectRatio: 1,
-              ), //상단 출발역,도착역 정보
+              ),
               itemCount: 80,
               itemBuilder: (context, index) {
                 var selectedSeats;
@@ -89,8 +89,21 @@ class _SeatPageState extends State<SeatPage> {
             ),
           ),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.purple,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
             onPressed: () => _confirmBooking,
-            child: const Text('예매하기'),
+            child: const Text(
+              '예매하기',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
           ),
         ], //하단 예매하기 버튼
       ),
