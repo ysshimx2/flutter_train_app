@@ -20,18 +20,34 @@ class StationListPage extends StatelessWidget {
   @override // 출발역 도착역 선택 박스
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(isDeparture ? '출발역' : '도착역')),
+      appBar: AppBar(
+        title: Text(isDeparture ? '출발역' : '도착역'),
+        centerTitle: true,
+      ),
       body: ListView.builder(
         itemCount: stations.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              stations[index],
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+          return GestureDetector(
             onTap: () {
               Navigator.pop(context, stations[index]); // 역을 선택하고, 선택된 값 반환
             },
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey[300]!, width: 1),
+                ),
+              ),
+              child: ListTile(
+                title: Text(
+                  stations[index],
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           );
         },
       ),

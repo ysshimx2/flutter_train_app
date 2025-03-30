@@ -95,33 +95,48 @@ class _SeatPageState extends State<SeatPage> {
 
 /// 출발역 - 도착역 Row 위젯으로 분리
 Widget _buildStationRow(dynamic widget) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Text(
-        widget.departureStation,
-        style: const TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          color: Colors.purple,
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 40), // 좌우 동일한 여백 확보
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              widget.departureStation,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.purple,
+              ),
+            ),
+          ),
         ),
-      ),
-      const SizedBox(width: 8), // 아이콘과 간격 추가
-      const Icon(
-        Icons.arrow_circle_right_outlined,
-        size: 30,
-        color: Colors.grey,
-      ),
-      const SizedBox(width: 8), // 아이콘과 간격 추가
-      Text(
-        widget.arrivalStation,
-        style: const TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          color: Colors.purple,
+        Expanded(
+          child: const Icon(
+            Icons.arrow_circle_right_outlined,
+            size: 30,
+            color: Colors.grey,
+          ),
         ),
-      ),
-    ],
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              widget.arrivalStation,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.purple,
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
   );
 }
 

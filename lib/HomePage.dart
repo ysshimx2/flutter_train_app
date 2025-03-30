@@ -86,15 +86,20 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 10),
                       SizedBox(
                         width: 100,
                         height: 70,
                         child: TextButton(
                           onPressed: () => _selectStation(true), // 출발역 선택
-                          child: Text(
-                            departureStation ?? '선택',
-                            style: TextStyle(fontSize: 40, color: Colors.black),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              departureStation ?? '선택',
+                              style: TextStyle(
+                                fontSize: 40,
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -114,15 +119,20 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 10),
                       SizedBox(
                         width: 100,
                         height: 70,
                         child: TextButton(
                           onPressed: () => _selectStation(false), // 도착역 선택
-                          child: Text(
-                            arrivalStation ?? '선택',
-                            style: TextStyle(fontSize: 40, color: Colors.black),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              arrivalStation ?? '선택',
+                              style: TextStyle(
+                                fontSize: 40,
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
                         ),
                       ),
