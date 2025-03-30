@@ -14,11 +14,6 @@ class SeatPage extends StatefulWidget {
   State<SeatPage> createState() => _SeatPageState();
 } //출발역 도착역 클래스
 
-//class _toggleSeat {
-//final int index;
-//const _toggleSeat(this.index);
-//}
-
 class _SeatPageState extends State<SeatPage> {
   Set<int> selectedSeats = {}; // 선택된 좌석
 
@@ -35,8 +30,106 @@ class _SeatPageState extends State<SeatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('좌석 선택'), centerTitle: true),
+      body: Column(
+        children: [
+          const SizedBox(height: 16), // 상단 여백
+          _buildStationRow(widget), // 출발역 ~ 도착역 Row 분리
+          const SizedBox(height: 16), // Row와 GridView 사이 여백
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(20),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                childAspectRatio: 1,
+              ),
+              itemCount: 80,
+              itemBuilder: (context, index) {
+                var selectedSeats;
+                return GestureDetector(
+                  onTap: () => _toggleSeat(index),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color:
+                          selectedSeats.contains(index)
+                              ? Colors.purple
+                              : Colors.grey[300],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 150,
+                  vertical: 15,
+                ),
+              ),
+              onPressed: () => _confirmBooking,
+              child: const Text(
+                '예매하기',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 출발역 - 도착역 Row 위젯으로 분리
+Widget _buildStationRow(dynamic widget) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        widget.departureStation,
+        style: const TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: Colors.purple,
+        ),
+      ),
+      const SizedBox(width: 8), // 아이콘과 간격 추가
+      const Icon(
+        Icons.arrow_circle_right_outlined,
+        size: 30,
+        color: Colors.grey,
+      ),
+      const SizedBox(width: 8), // 아이콘과 간격 추가
+      Text(
+        widget.arrivalStation,
+        style: const TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: Colors.purple,
+        ),
+      ),
+    ],
+  );
+}
+
+/*  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(title: const Center(child: Text('좌석 선택'))),
-      body: Row(
+      body: Column(
         children: [
           Text(
             widget.departureStation,
@@ -94,6 +187,10 @@ class _SeatPageState extends State<SeatPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 150,
+                vertical: 15,
+              ),
             ),
             onPressed: () => _confirmBooking,
             child: const Text(
@@ -109,7 +206,7 @@ class _SeatPageState extends State<SeatPage> {
       ),
     );
   }
-}
+} */
 
 void _confirmBooking(dynamic selectedSeats) {
   if (selectedSeats.isEmpty) return; // 선택된 좌석이 없으면 예약하지 않음
