@@ -30,12 +30,15 @@ class _SeatPageState extends State<SeatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('좌석 선택'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('좌석 선택'),
+        centerTitle: true,
+      ), //상단 앱바 제목 가운데 고정
       body: Column(
         children: [
           _buildStationRow(widget), // 출발역 ~ 도착역 Row 분리
           const SizedBox(height: 16), // Row와 GridView 사이 여백
-          Expanded(
+          /*Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(20),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -61,7 +64,7 @@ class _SeatPageState extends State<SeatPage> {
                 );
               },
             ),
-          ),
+          ), */
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: ElevatedButton(
@@ -93,7 +96,7 @@ class _SeatPageState extends State<SeatPage> {
   }
 }
 
-/// 출발역 - 도착역 Row 위젯으로 분리
+// 출발역, 화살표, 도착역 Row 위젯으로 분리
 Widget _buildStationRow(dynamic widget) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 40), // 좌우 동일한 여백 확보
@@ -102,7 +105,7 @@ Widget _buildStationRow(dynamic widget) {
       children: [
         Expanded(
           child: FittedBox(
-            fit: BoxFit.scaleDown,
+            fit: BoxFit.scaleDown, // 역 이름 길면 텍스트 크기 자동 줄임
             child: Text(
               widget.departureStation,
               textAlign: TextAlign.center,
@@ -123,7 +126,7 @@ Widget _buildStationRow(dynamic widget) {
         ),
         Expanded(
           child: FittedBox(
-            fit: BoxFit.scaleDown,
+            fit: BoxFit.scaleDown, // 역 이름 길면 텍스트 크기 자동 줄임
             child: Text(
               widget.arrivalStation,
               textAlign: TextAlign.center,
