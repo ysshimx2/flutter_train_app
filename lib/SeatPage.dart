@@ -65,6 +65,8 @@ class _SeatPageState extends State<SeatPage> {
               },
             ),
           ), */
+          //좌석 선택 그리드뷰
+          //코드 내 오류는 발견되지 않지만 UI작동하지 않는 문제 발생 중
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: ElevatedButton(
@@ -142,89 +144,6 @@ Widget _buildStationRow(dynamic widget) {
     ),
   );
 }
-
-/*  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Center(child: Text('좌석 선택'))),
-      body: Column(
-        children: [
-          Text(
-            widget.departureStation,
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.purple,
-            ),
-          ),
-          const Icon(
-            Icons.arrow_circle_right_outlined,
-            size: 30,
-            color: Colors.grey,
-          ),
-          Text(
-            widget.arrivalStation,
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.purple,
-            ),
-          ), //상단 출발역,화살표 아이콘,도착역
-
-          const SizedBox(height: 20),
-          Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(20),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-                childAspectRatio: 1,
-              ),
-              itemCount: 80,
-              itemBuilder: (context, index) {
-                var selectedSeats;
-                return GestureDetector(
-                  onTap: () => _toggleSeat(index),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color:
-                          selectedSeats.contains(index)
-                              ? Colors.purple
-                              : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(8),
-                    ), //각 좌석 특성 설정
-                  ),
-                );
-              },
-            ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.purple,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 150,
-                vertical: 15,
-              ),
-            ),
-            onPressed: () => _confirmBooking,
-            child: const Text(
-              '예매하기',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ], //하단 예매하기 버튼
-      ),
-    );
-  }
-} */
 
 void _confirmBooking(dynamic selectedSeats) {
   if (selectedSeats.isEmpty) return; // 선택된 좌석이 없으면 예약하지 않음
